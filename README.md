@@ -25,8 +25,8 @@ The MongoDB environment consists of the following docker containers
 
 ### Check out the repository
 
-    git clone git@github.com:singram/mongo-docker-compose.git
-    cd mongo-docker-compose
+    git clone <-- your repository address -->
+    cd mongo-cluster
 
 
 ### Setup Cluster
