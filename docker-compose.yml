@@ -10,8 +10,8 @@ services:
       - "mongo.replica=${NODE}"
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - mongodata${NODE}:/data/db
-      - mongoconfig${NODE}:/data/configdb
+      - "mongodata${NODE}:/data/db"
+      - "mongoconfig${NODE}:/data/configdb"
     networks:
       - overlay
 
