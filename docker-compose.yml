@@ -6,6 +6,11 @@ services:
     command: mongod --smallfiles --replSet rs1 --dbpath /data/db --nojournal --oplogSize 16 --noauth
     environment:
       TERM: xterm
+    labels:
+      - "mongo.replica={REPLICA_SET}"
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ./data:/data/db
+    networks:
+      - mongo-overlay
+    
