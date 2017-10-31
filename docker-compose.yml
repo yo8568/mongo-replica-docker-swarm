@@ -10,12 +10,8 @@ services:
       - "mongo.replica=${NODE}"
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - type: volume
-        source: mongodata${NODE}
-        target: /data/db
-      - type: volume
-        source: mongoconfig${NODE}
-        target: /data/configdb
+      - mongodata${NODE}:/data/db
+      - mongoconfig${NODE}:/data/configdb
     networks:
       - overlay
 
