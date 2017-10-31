@@ -13,6 +13,8 @@ services:
       - ./data:/data/db
     networks:
       - overlay
+    ports:
+      - 27017:27017
 
 networks:
   overlay:
