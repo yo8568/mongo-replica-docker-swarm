@@ -3,7 +3,7 @@ services:
 
   mongo1:
     image: mongo:3.4
-    command: mongod --smallfiles --replSet rs1 --noauth
+    command: mongod --smallfiles --replSet rs1 --noauth --nojournal --oplogSize 16
     environment:
       TERM: xterm
     volumes:
@@ -13,13 +13,13 @@ services:
     networks:
       - overlay
     deploy:
-      replicas: 2
+      replicas: 1
       placement:
         constraints:
           - node.labels.mongo.replica == 1
   mongo2:
     image: mongo:3.4
-    command: mongod --smallfiles --replSet rs1 --noauth
+    command: mongod --smallfiles --replSet rs1 --noauth --nojournal --oplogSize 16
     environment:
       TERM: xterm
     volumes:
@@ -29,14 +29,14 @@ services:
     networks:
       - overlay
     deploy:
-      replicas: 2
+      replicas: 1
       placement:
         constraints:
           - node.labels.mongo.replica == 2
 
   mongo3:
     image: mongo:3.4
-    command: mongod --smallfiles --replSet rs1 --noauth
+    command: mongod --smallfiles --replSet rs1 --noauth --nojournal --oplogSize 16
     environment:
       TERM: xterm
     volumes:
@@ -46,7 +46,7 @@ services:
     networks:
       - overlay
     deploy:
-      replicas: 2
+      replicas: 1
       placement:
         constraints:
           - node.labels.mongo.replica == 3
