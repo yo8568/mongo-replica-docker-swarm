@@ -45,7 +45,7 @@ This will pull all the images from [Docker index](https://index.docker.io/u/jack
 
 First, you should setup mongodb container on each node.
 
-    docker-compose up -d
+    docker stack deploy -c docker-compose.yml mongo
 
 And, you should login *Master node* and run the under command
 
