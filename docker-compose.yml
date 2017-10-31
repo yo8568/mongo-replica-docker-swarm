@@ -53,3 +53,11 @@ services:
 
 networks:
   overlay:
+
+volumes:
+  mongodata1:
+  mongodata2:
+  mongodata3:
+  mongoconfig1:
+  mongoconfig2:
+  mongoconfig3:
