@@ -13,4 +13,6 @@ services:
       - ./data:/data/db
     networks:
       - mongo-overlay
-    
+
+networks:
+  mongo-overlay:
