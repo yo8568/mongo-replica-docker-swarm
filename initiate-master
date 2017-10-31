@@ -2,4 +2,4 @@
 
 echo "Intializing replica set on master"
 replicate="rs.initiate(); sleep(1000); cfg = rs.conf(); cfg.members[0].host = \"mongo1:27017\"; rs.reconfig(cfg); rs.add(\"mongo2:27017\"); rs.add(\"mongo3:27017\"); rs.status();"
-docker exec -it $(docker ps -qf label=com.docker.swarm.service.name=mongo_mongo1) mongo bash -c "echo '${replicate}' | mongo"
+docker exec -it $(docker ps -qf label=com.docker.swarm.service.name=mongo_mongo1) mongo bash ${replicate}
