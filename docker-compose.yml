@@ -12,7 +12,7 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - ./data:/data/db
     networks:
-      - mongo-overlay
+      - overlay
 
 networks:
-  mongo-overlay:
+  overlay:
