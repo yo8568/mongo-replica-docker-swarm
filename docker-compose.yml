@@ -7,11 +7,11 @@ services:
     environment:
       TERM: xterm
     labels:
-      - "mongo.replica=${NODE}"
+      - "mongo.replica=${NODE_NUM}"
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - mongodata${NODE}:/data/db
-      - mongoconfig${NODE}:/data/configdb
+      - "mongodata${NODE_NUM}:/data/db"
+      - "mongoconfig${NODE_NUM}:/data/configdb"
     networks:
       - overlay
 
