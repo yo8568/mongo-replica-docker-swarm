@@ -1,19 +1,55 @@
 version: "3"
 services:
 
-  mongo:
+  mongo1:
     image: mongo:3.4
-    command: mongod --smallfiles --replSet rs1 --dbpath /data/db --nojournal --oplogSize 16 --noauth
+    command: mongod --smallfiles --replSet rs1 --noauth
     environment:
       TERM: xterm
-    labels:
-      - "mongo.replica=$NODE_NUM"
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - "mongodata${NODE_NUM}:/data/db"
-      - "mongoconfig${NODE_NUM}:/data/configdb"
+      - mongodata1:/data/db
+      - mongoconfig1:/data/configdb
     networks:
       - overlay
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.labels.mongo.replica == 1
+  mongo2:
+    image: mongo:3.4
+    command: mongod --smallfiles --replSet rs1 --noauth
+    environment:
+      TERM: xterm
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - mongodata2:/data/db
+      - mongoconfig2:/data/configdb
+    networks:
+      - overlay
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.labels.mongo.replica == 2
+
+  mongo3:
+    image: mongo:3.4
+    command: mongod --smallfiles --replSet rs1 --noauth
+    environment:
+      TERM: xterm
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - mongodata3:/data/db
+      - mongoconfig3:/data/configdb
+    networks:
+      - overlay
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.labels.mongo.replica == 3
 
 networks:
   overlay:
