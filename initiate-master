@@ -1,0 +1,7 @@
+#!/bin/bash
+
+echo "Intializing Data Nodes as Replica Set"
+
+echo "Intializing replica set on master"
+replicate="rs.initiate(); sleep(1000); cfg = rs.conf(); cfg.members[0].host = \"10.1.4.91:27017\"; rs.reconfig(cfg); rs.add(\"10.1.4.92:27017\"); rs.add(\"10.1.4.93:27017\"); rs.status();"
+docker exec -it mongo bash -c "echo '${replicate}' | mongo localhost:27017"
