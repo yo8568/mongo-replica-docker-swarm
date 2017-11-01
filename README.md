@@ -1,4 +1,4 @@
-# mongo-docker-swarm
+# mongo-replica-docker-swarm
 
 Running Mongo DB Replica Set on three different server by Docker Swarm.
 
