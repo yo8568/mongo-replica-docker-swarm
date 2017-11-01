@@ -1,11 +1,14 @@
 # mongo-docker-swarm
 
-Running Mongo DB Replica Set on three different server by Docker Swarm
+Running Mongo DB Replica Set on three different server by Docker Swarm.
+
+The oplog size sets to 3(MB), because of 5% of free disk space.
 
 ## Server Requirements
 
 1. Docker (version >= 17.0.0)
 1. Docker-Compose
+1. Compose file(version >= 3.0.0)
 
 ### Install Docker
 
@@ -35,7 +38,7 @@ Running Mongo DB Replica Set on three different server by Docker Swarm
     To add a worker to this swarm, run the following command:
 
         docker swarm join \
-        --token *Docker Swarm Token* \
+        --token *docker-swarm-token* \
         *manager-address*
 
     To add a manager to this swarm, run 'docker swarm join-token manager' and follow the instructions.
@@ -43,7 +46,7 @@ Running Mongo DB Replica Set on three different server by Docker Swarm
 ### Initialize Worker Node
 
     ssh <-- The other servers -->
-    docker swarm join --token *Docker Swarm Token* *manager-address*
+    docker swarm join --token *docker-swarm-token* *manager-address*
 
 ### Setup Mongo DB on each node
 
@@ -67,7 +70,18 @@ And, you should login *Manager node* and run the under command.
 
 ## Persistent storage
 
-Data is stored at `./data` and is excluded from version control. Data will be persistent between container runs. To remove all data `./reset`
+Data is stored at `Docker Swarm Volume`, if you want to check the `Mountpoint` on physical machine. Running the following command:
+
+    docker volume inspect *service name*
+
+Data will be persistent between service runs. To remove docker stack and all data. Run the following command:
+
+    docker stack rm overlay
+    docker volume rm $(docker volume ls -qf label=com.docker.stack.namespace=overlay)
+
+Leave smarm mode
+
+    docker swarm leave
 
 ## Reference
 

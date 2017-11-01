@@ -3,13 +3,13 @@ services:
 
   mongo1:
     image: mongo:3.4
-    command: mongod --smallfiles --replSet rs1 --noauth --oplogSize 16
+    command: mongod --smallfiles --replSet rs1 --noauth --oplogSize 3
     environment:
       TERM: xterm
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - mongodata1:/data/db
-      - mongoconfig1:/data/configdb
+      - mongo-data-1:/data/db
+      - mongo-config-1:/data/configdb
     networks:
       - overlay
     deploy:
@@ -19,13 +19,13 @@ services:
           - node.labels.mongo.replica == 1
   mongo2:
     image: mongo:3.4
-    command: mongod --smallfiles --replSet rs1 --noauth --oplogSize 16
+    command: mongod --smallfiles --replSet rs1 --noauth --oplogSize 3
     environment:
       TERM: xterm
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - mongodata2:/data/db
-      - mongoconfig2:/data/configdb
+      - mongo-data-2:/data/db
+      - mongo-config-2:/data/configdb
     networks:
       - overlay
     deploy:
@@ -36,13 +36,13 @@ services:
 
   mongo3:
     image: mongo:3.4
-    command: mongod --smallfiles --replSet rs1 --noauth --oplogSize 16
+    command: mongod --smallfiles --replSet rs1 --noauth --oplogSize 3
     environment:
       TERM: xterm
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - mongodata3:/data/db
-      - mongoconfig3:/data/configdb
+      - mongo-data-3:/data/db
+      - mongo-config-3:/data/configdb
     networks:
       - overlay
     deploy:
@@ -55,9 +55,9 @@ networks:
   overlay:
 
 volumes:
-  mongodata1:
-  mongodata2:
-  mongodata3:
-  mongoconfig1:
-  mongoconfig2:
-  mongoconfig3:
+  mongo-data-1:
+  mongo-data-2:
+  mongo-data-3:
+  mongo-config-1:
+  mongo-config-2:
+  mongo-config-3:

@@ -1,6 +1,0 @@
-#!/bin/bash
-
-echo "Resetting data/"
-  sudo rm -rf data
-  mkdir data
-  touch data/.gitkeep
