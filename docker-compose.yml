@@ -3,7 +3,7 @@ services:
 
   mongo1:
     image: mongo:3.4
-    command: mongod --smallfiles --replSet rs1 --noauth --nojournal --oplogSize 16
+    command: mongod --smallfiles --replSet rs1 --noauth --oplogSize 16
     environment:
       TERM: xterm
     volumes:
@@ -19,7 +19,7 @@ services:
           - node.labels.mongo.replica == 1
   mongo2:
     image: mongo:3.4
-    command: mongod --smallfiles --replSet rs1 --noauth --nojournal --oplogSize 16
+    command: mongod --smallfiles --replSet rs1 --noauth --oplogSize 16
     environment:
       TERM: xterm
     volumes:
@@ -36,7 +36,7 @@ services:
 
   mongo3:
     image: mongo:3.4
-    command: mongod --smallfiles --replSet rs1 --noauth --nojournal --oplogSize 16
+    command: mongod --smallfiles --replSet rs1 --noauth --oplogSize 16
     environment:
       TERM: xterm
     volumes:
