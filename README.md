@@ -43,7 +43,7 @@ The oplog size sets to 3(MB), because of 5% of free disk space.
 
     To add a manager to this swarm, run 'docker swarm join-token manager' and follow the instructions.
 
-### Initialize Worker Node
+### Join Worker Node into network
 
     ssh <-- The other servers -->
     docker swarm join --token *docker-swarm-token* *manager-address*
@@ -66,7 +66,9 @@ And, you should login *Manager node* and run the under command.
 
     ./initiate-master
 
-    # docker service update --publish-rm 27017:27017 overlay_mongo1 // if it was set before, need to remove first.
+    # docker service update --publish-rm 27017:27017 overlay_mongo1
+    # // if publish port was set before, need to remove first and update it.
+
     docker service update --publish-add 27017:27017 overlay_mongo1
 
 ## Persistent storage
@@ -83,8 +85,6 @@ Data will be persistent between service runs. To remove docker stack and all dat
 Leave smarm mode
 
     docker swarm leave
-
-*** If remove the 
 
 ## Reference
 
