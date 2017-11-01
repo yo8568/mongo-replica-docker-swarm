@@ -62,11 +62,12 @@ Second, deploy service on manager node.
     ssh <-- The manager node server -->
     docker stack deploy -c docker-compose.yml overlay
 
-    docker service update --publish-add 27017:27017 overlay_mongo1
-
 And, you should login *Manager node* and run the under command.
 
-    ./initialte-manager
+    ./initiate-master
+
+    # docker service update --publish-rm 27017:27017 overlay_mongo1 // if it was set before, need to remove first.
+    docker service update --publish-add 27017:27017 overlay_mongo1
 
 ## Persistent storage
 
@@ -82,6 +83,8 @@ Data will be persistent between service runs. To remove docker stack and all dat
 Leave smarm mode
 
     docker swarm leave
+
+*** If remove the 
 
 ## Reference
 
