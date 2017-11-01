@@ -11,7 +11,7 @@ services:
       - mongo-data-1:/data/db
       - mongo-config-1:/data/configdb
     networks:
-      - overlay
+      - mongo
     deploy:
       replicas: 1
       placement:
@@ -27,7 +27,7 @@ services:
       - mongo-data-2:/data/db
       - mongo-config-2:/data/configdb
     networks:
-      - overlay
+      - mongo
     deploy:
       replicas: 1
       placement:
@@ -44,7 +44,7 @@ services:
       - mongo-data-3:/data/db
       - mongo-config-3:/data/configdb
     networks:
-      - overlay
+      - mongo
     deploy:
       replicas: 1
       placement:
@@ -52,7 +52,7 @@ services:
           - node.labels.mongo.replica == 3
 
 networks:
-  overlay:
+  mongo:
 
 volumes:
   mongo-data-1:
