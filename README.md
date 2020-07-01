@@ -82,7 +82,7 @@ Data will be persistent between service runs. To remove docker stack and all dat
     docker stack rm overlay
     docker volume rm $(docker volume ls -qf label=com.docker.stack.namespace=overlay)
 
-Leave smarm mode
+Leave swarm mode
 
     docker swarm leave
 
